@@ -1,0 +1,41 @@
+{
+  "name": "cozy",
+  "version": "0.1.0",
+  "description": "A template for a modern NodeJS backend.",
+  "main": "src/bin.js",
+  "repository": "https://github.com/maxcountryman/cozy",
+  "author": "Max Countryman",
+  "license": "EPL-1.0",
+  "scripts": {
+    "build": "babel src -s -D -d dist --presets env,stage-0",
+    "dev": "nodemon -w src --exec \"babel-node src/bin.js --presets env,stage-0\"",
+    "start": "node dist/bin.js",
+    "prestart": "npm run -s build",
+    "test": "eslint src/ && ava -v src/**/*.test.js"
+  },
+  "ava": {
+    "require": [
+      "babel-register",
+      "babel-polyfill"
+    ],
+    "babel": "inherit"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "winston": "next"
+  },
+  "devDependencies": {
+    "ava": "^0.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.10.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "nodemon": "^1.12.1",
+    "sinon": "^4.0.2",
+    "supertest": "^3.0.0"
+  }
+}
